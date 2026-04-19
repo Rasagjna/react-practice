@@ -4,3 +4,4 @@ export const CDN_URL = "https://cdn.dribbble.com/userupload/16778067/file/origin
 //in one file i can have only one ddefault export.
 /// named export
 //default export 
+export const RESTAURANT_MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.3741816&lng=78.55342569999999&restaurantId="

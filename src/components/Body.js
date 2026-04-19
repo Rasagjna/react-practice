@@ -2,6 +2,7 @@ import ResuarantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () =>{
     // State Variable - super powerful variable.
@@ -91,7 +92,7 @@ const fetchData = async() =>{
 
 }
 
- useEffect(()=>{
+useEffect(()=>{
 fetchData();
     },[]);
 
@@ -111,8 +112,7 @@ if(listOfRestaurants.length ===0){
                     }}>search</button>
                      </div>
                 <button className="filter-btn" 
-                onClick={()=>{
-                    
+                onClick={()=>{    
                     const filteredList=listOfRestaurants.filter(res=>res.info.avgRating > 4)
                     setListOfRestaurants(filteredList)
                     }}>Top Rated Restaurants</button>
@@ -121,7 +121,11 @@ if(listOfRestaurants.length ===0){
                 {/* restuarant card */}
                 {/* <ResuarantCard resName = "Meghana Foods" cuisine = "Burger,Fast Food"/> */}
                 {
-                    filteredRestuarsnt.map(restaurant => <ResuarantCard key={restaurant?.info?.id} resData = {restaurant}/>)
+                    filteredRestuarsnt.map(restaurant =>
+                        (<Link to={"/restaurants/"+restaurant?.info?.id} key={restaurant?.info?.id}>
+                        <ResuarantCard resData = {restaurant}/>
+                        </Link>)
+                    )
                 }
                 {/* <ResuarantCard resData = {restaurants[0]}/> */}
             </div>
